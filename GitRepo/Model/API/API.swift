@@ -10,11 +10,16 @@ import Foundation
 
 class API {
 
+    let networkError = NSError(domain: "A network error has occurred. Check your Internet connection and try again later", code: 01, userInfo: nil)
+    let noUserError = NSError(domain: "User not found. Please enter another name", code: 02, userInfo: nil)
     
     func get(str : String, handler : @escaping (Data?, URLResponse?, Error?) -> ()) {
         
-        let url = URL(string: str)
-        let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
+        guard let url = URL(string: str) else {
+            handler(nil,nil, noUserError)
+            return
+        }
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             DispatchQueue.main.async {
                 handler(data,response,error)
             }
@@ -23,15 +28,16 @@ class API {
         
         task.resume()
     }
-    func getRepo(userName : String, completion : @escaping ( ([RepoResponse]) -> ()  ) )  {
+    func getRepo(userName : String, completion : @escaping ( ([RepoResponse]?, Error?) -> ()  ) )  {
         let urlString = "https://api.github.com/users/\(userName)/repos"
         get(str: urlString) { (data, response, error) in
             let jsonDecoder = JSONDecoder()
             guard let responseModel = try? jsonDecoder.decode(Array<RepoResponse>.self, from: data ?? Data())
                 else {
+                    completion(nil, self.networkError)
                     return
             }
-            completion(responseModel)
+            completion(responseModel, nil)
             print(responseModel.count)
         
         }

@@ -29,6 +29,9 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="inputDidEndEditing:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="jfE-xP-rZW"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -36,6 +39,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Github" id="fKT-nO-lSN"/>
                     <connections>
+                        <outlet property="inputField" destination="y2c-Hg-58l" id="aTg-CM-IVD"/>
                         <segue destination="3oa-F6-M2u" kind="push" identifier="Detail" id="7Nl-Ex-0Xc"/>
                     </connections>
                 </viewController>
