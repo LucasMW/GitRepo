@@ -8,8 +8,16 @@
 
 import UIKit
 
-class RepoCell : UITableViewCell {
-    
+extension UIImageView {
+
+    func makeRounded() {
+
+        self.layer.borderWidth = 1
+        self.layer.masksToBounds = false
+        self.layer.borderColor = UIColor.clear.cgColor
+        self.layer.cornerRadius = self.frame.height / 2
+        self.clipsToBounds = true
+    }
 }
 
 class ProfileDetailViewController: UIViewController {
@@ -24,6 +32,7 @@ class ProfileDetailViewController: UIViewController {
         API().get(str: url) { (data, response, error) in
             let image = UIImage(data: data ?? Data())
             self.picture.image = image
+            self.picture.makeRounded()
         }
     }
     override func viewDidLoad() {
