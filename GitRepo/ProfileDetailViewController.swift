@@ -20,6 +20,12 @@ class ProfileDetailViewController: UIViewController {
     
     var array : [RepoResponse]!
     
+    func loadPicture(url : String){
+        API().get(str: url) { (data, response, error) in
+            let image = UIImage(data: data ?? Data())
+            self.picture.image = image
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         print("profile detail")
@@ -28,6 +34,9 @@ class ProfileDetailViewController: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "repoCell")
         tableView.delegate = self
         tableView.dataSource = self
+        let avatarURL = array.first?.owner?.avatar_url
+        loadPicture(url: avatarURL ?? "")
+        
         
     }
 }
