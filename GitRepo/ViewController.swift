@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     var repoName : String = ""
     var array : [RepoResponse] = []
@@ -17,7 +17,36 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        inputField.delegate = self
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+        target: self,
+        action: #selector(dismissMyKeyboard))
+        //Add this tap gesture recognizer to the parent view
+        view.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
+    }
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    @objc func dismissMyKeyboard(){
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+       textField.resignFirstResponder()
+        return true
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
     
     func showAlert(title: String, message : String) {
@@ -39,10 +68,9 @@ class ViewController: UIViewController {
         let api = API()
         api.getRepo(userName: repoName) { array, error  in
             if error != nil {
-                self.showAlert(message: error!.localizedDescription)
+                self.showAlert(message: error?.toMessage() ?? "???")
             }
             self.array = array ?? []
-            print(array)
             self.performSegue(withIdentifier: "Detail", sender: nil)
         }
     }
