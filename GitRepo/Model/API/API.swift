@@ -12,14 +12,18 @@ class API {
 
     
     func get(str : String, handler : @escaping (Data?, URLResponse?, Error?) -> ()) {
+        
         let url = URL(string: str)
         let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
-            handler(data,response,error)
+            DispatchQueue.main.async {
+                handler(data,response,error)
+            }
+            
         }
         
         task.resume()
     }
-    func getRepo(userName : String) {
+    func getRepo(userName : String, completion : @escaping ( ([RepoResponse]) -> ()  ) )  {
         let urlString = "https://api.github.com/users/\(userName)/repos"
         get(str: urlString) { (data, response, error) in
             let jsonDecoder = JSONDecoder()
@@ -27,6 +31,7 @@ class API {
                 else {
                     return
             }
+            completion(responseModel)
             print(responseModel.count)
         
         }

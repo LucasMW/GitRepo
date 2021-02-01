@@ -19,6 +19,7 @@
 		FF3A8D9F25C8942F00D954D4 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A8D9C25C8942F00D954D4 /* License.swift */; };
 		FF3A8DA025C8942F00D954D4 /* RepoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A8D9D25C8942F00D954D4 /* RepoResponse.swift */; };
 		FF3A8DA225C894AA00D954D4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A8DA125C894AA00D954D4 /* API.swift */; };
+		FF3A8DA425C8A11800D954D4 /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A8DA325C8A11800D954D4 /* ProfileDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		FF3A8D9C25C8942F00D954D4 /* License.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
 		FF3A8D9D25C8942F00D954D4 /* RepoResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoResponse.swift; sourceTree = "<group>"; };
 		FF3A8DA125C894AA00D954D4 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		FF3A8DA325C8A11800D954D4 /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				FF3A8D6925C886A600D954D4 /* AppDelegate.swift */,
 				FF3A8D6B25C886A600D954D4 /* SceneDelegate.swift */,
 				FF3A8D6D25C886A600D954D4 /* ViewController.swift */,
+				FF3A8DA325C8A11800D954D4 /* ProfileDetailViewController.swift */,
 				FF3A8D6F25C886A600D954D4 /* Main.storyboard */,
 				FF3A8D7225C886A700D954D4 /* Assets.xcassets */,
 				FF3A8D7425C886A700D954D4 /* LaunchScreen.storyboard */,
@@ -292,6 +295,7 @@
 				FF3A8D9F25C8942F00D954D4 /* License.swift in Sources */,
 				FF3A8D6A25C886A600D954D4 /* AppDelegate.swift in Sources */,
 				FF3A8D6C25C886A600D954D4 /* SceneDelegate.swift in Sources */,
+				FF3A8DA425C8A11800D954D4 /* ProfileDetailViewController.swift in Sources */,
 				FF3A8DA025C8942F00D954D4 /* RepoResponse.swift in Sources */,
 				FF3A8DA225C894AA00D954D4 /* API.swift in Sources */,
 			);
