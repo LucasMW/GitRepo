@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
+        API().getRepo(userName: "LucasMW")
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
