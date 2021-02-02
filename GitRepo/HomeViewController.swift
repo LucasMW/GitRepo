@@ -8,10 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class HomeViewController: UIViewController, UITextFieldDelegate {
 
     var repoName : String = ""
     var array : [RepoResponse] = []
+    var isPresenting = false
     
     @IBOutlet weak var inputField: UITextField!
     override func viewDidLoad() {
@@ -50,15 +51,22 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func showAlert(title: String, message : String) {
+        print("show alert")
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         let action = UIAlertAction(title: "OK", style: .default) { (action) in
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: {
+                self.isPresenting = false
+            })
+            
         }
         alert.addAction(action)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.0) {
-            self.navigationController?.popToRootViewController(animated: true)
+        if(isPresenting == false){
             self.view.window?.rootViewController?.present(alert, animated: true, completion: nil)
+            isPresenting = true
         }
+        
+        
+       
         
         
     }
@@ -74,17 +82,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func searchButtonPressed(_ sender: Any) {
         print("Pressed")
         let api = API()
+        collectName()
         api.getRepo(userName: repoName) { array, error  in
             if error != nil {
-                print(error)
+                print(error?.toMessage())
                 self.showAlert(message: error?.toMessage() ?? "???")
+                print("SHOULD RETURN")
                 return
             }
             self.array = array ?? []
             let vc = ProfileDetailViewController()
             vc.array = array
-            self.view.window?.rootViewController?.present(vc, animated: true, completion: nil)
-            //self.performSegue(withIdentifier: "Detail", sender: nil)
+             self.navigationController?.popToRootViewController(animated: true)
+            //self.view.window?.rootViewController?.present(vc, animated: true, completion: nil)
+            self.performSegue(withIdentifier: "Detail", sender: nil)
         }
     }
     

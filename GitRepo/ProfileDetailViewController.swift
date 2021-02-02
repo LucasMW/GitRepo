@@ -39,7 +39,9 @@ class ProfileDetailViewController: UIViewController {
         super.viewDidLoad()
         print("profile detail")
         print(array.count)
-        self.profileNameLabel.text = array.first?.owner?.login ?? "???"
+        
+        let profile = array.first?.owner?.login ?? "???"
+        self.profileNameLabel.text = profile
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "repoCell")
         tableView.delegate = self
         tableView.dataSource = self
