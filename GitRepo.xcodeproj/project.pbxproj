@@ -20,6 +20,7 @@
 		FF3A8DA025C8942F00D954D4 /* RepoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A8D9D25C8942F00D954D4 /* RepoResponse.swift */; };
 		FF3A8DA225C894AA00D954D4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A8DA125C894AA00D954D4 /* API.swift */; };
 		FF3A8DA425C8A11800D954D4 /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A8DA325C8A11800D954D4 /* ProfileDetailViewController.swift */; };
+		FF3A8DA625C8C2C300D954D4 /* GithubErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A8DA525C8C2C300D954D4 /* GithubErrorMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		FF3A8D9D25C8942F00D954D4 /* RepoResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoResponse.swift; sourceTree = "<group>"; };
 		FF3A8DA125C894AA00D954D4 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		FF3A8DA325C8A11800D954D4 /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
+		FF3A8DA525C8C2C300D954D4 /* GithubErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubErrorMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				FF3A8D9D25C8942F00D954D4 /* RepoResponse.swift */,
 				FF3A8D9C25C8942F00D954D4 /* License.swift */,
 				FF3A8D9B25C8942F00D954D4 /* Owner.swift */,
+				FF3A8DA525C8C2C300D954D4 /* GithubErrorMessage.swift */,
 				FF3A8D9A25C892C500D954D4 /* API */,
 			);
 			path = Model;
@@ -298,6 +301,7 @@
 				FF3A8DA425C8A11800D954D4 /* ProfileDetailViewController.swift in Sources */,
 				FF3A8DA025C8942F00D954D4 /* RepoResponse.swift in Sources */,
 				FF3A8DA225C894AA00D954D4 /* API.swift in Sources */,
+				FF3A8DA625C8C2C300D954D4 /* GithubErrorMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

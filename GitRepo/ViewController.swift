@@ -23,9 +23,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(
         target: self,
         action: #selector(dismissMyKeyboard))
-        //Add this tap gesture recognizer to the parent view
         view.addGestureRecognizer(tap)
-        // Do any additional setup after loading the view.
     }
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
@@ -36,10 +34,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     @objc func dismissMyKeyboard(){
         view.endEditing(true)
+        collectName()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
        textField.resignFirstResponder()
+        collectName()
         return true
     }
 
@@ -51,31 +51,47 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func showAlert(title: String, message : String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        let action = UIAlertAction(title: "OK", style: .default) { (action) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(action)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.0) {
+            self.navigationController?.popToRootViewController(animated: true)
+            self.view.window?.rootViewController?.present(alert, animated: true, completion: nil)
+        }
+        
         
     }
     func showAlert(message : String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-        
+        showAlert(title: "Error", message: message)
     }
-    @IBAction func inputDidEndEditing(_ sender: Any) {
+    func collectName() {
         self.repoName = inputField.text ?? ""
     }
+    @IBAction func inputDidEndEditing(_ sender: Any) {
+        collectName()
+    }
     @IBAction func searchButtonPressed(_ sender: Any) {
+        print("Pressed")
         let api = API()
         api.getRepo(userName: repoName) { array, error  in
             if error != nil {
+                print(error)
                 self.showAlert(message: error?.toMessage() ?? "???")
+                return
             }
             self.array = array ?? []
-            self.performSegue(withIdentifier: "Detail", sender: nil)
+            let vc = ProfileDetailViewController()
+            vc.array = array
+            self.view.window?.rootViewController?.present(vc, animated: true, completion: nil)
+            //self.performSegue(withIdentifier: "Detail", sender: nil)
         }
     }
     
-    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return false
+        
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Detail" {
             guard let vc = segue.destination as? ProfileDetailViewController else {

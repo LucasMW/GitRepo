@@ -43,10 +43,22 @@ class API {
     func getRepo(userName : String, completion : @escaping ( ([RepoResponse]?, APIErrors?) -> ()  ) )  {
         let urlString = "https://api.github.com/users/\(userName)/repos"
         get(str: urlString) { (data, response, error) in
+            if error == nil {
+                completion(nil, .networkError)
+            }
             let jsonDecoder = JSONDecoder()
-            guard let responseModel = try? jsonDecoder.decode(Array<RepoResponse>.self, from: data ?? Data())
+            guard let responseModel = try?
+                
+                jsonDecoder.decode(Array<RepoResponse>.self, from: data ?? Data())
                 else {
-                    completion(nil, APIErrors.noUserError)
+                    guard let string = String(data: data ?? Data(), encoding: .utf8) else {
+                        completion(nil, APIErrors.networkError)
+                        return
+                    }
+                    if string.contains("Not Found"){
+                        completion(nil, APIErrors.noUserError)
+                    }
+        
                     return
             }
             completion(responseModel, nil)

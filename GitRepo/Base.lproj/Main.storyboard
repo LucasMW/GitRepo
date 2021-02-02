@@ -40,7 +40,7 @@
                     <navigationItem key="navigationItem" title="Github" id="fKT-nO-lSN"/>
                     <connections>
                         <outlet property="inputField" destination="y2c-Hg-58l" id="aTg-CM-IVD"/>
-                        <segue destination="3oa-F6-M2u" kind="push" identifier="Detail" id="7Nl-Ex-0Xc"/>
+                        <segue destination="3oa-F6-M2u" kind="show" identifier="Detail" id="f8u-az-IFU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

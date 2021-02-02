@@ -9,9 +9,9 @@
 import UIKit
 
 extension UIImageView {
-
+    
     func makeRounded() {
-
+        
         self.layer.borderWidth = 1
         self.layer.masksToBounds = false
         self.layer.borderColor = UIColor.clear.cgColor
@@ -21,7 +21,7 @@ extension UIImageView {
 }
 
 class ProfileDetailViewController: UIViewController {
-
+    
     @IBOutlet weak var picture: UIImageView!
     @IBOutlet weak var profileNameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
