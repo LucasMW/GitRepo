@@ -11,7 +11,6 @@ import UIKit
 extension UIImageView {
     
     func makeRounded() {
-        
         self.layer.borderWidth = 1
         self.layer.masksToBounds = false
         self.layer.borderColor = UIColor.clear.cgColor
@@ -37,8 +36,6 @@ class ProfileDetailViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("profile detail")
-        print(array.count)
         
         let profile = array.first?.owner?.login ?? "???"
         self.profileNameLabel.text = profile
@@ -58,7 +55,7 @@ extension ProfileDetailViewController : UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  UITableViewCell(style: .subtitle, reuseIdentifier: "repoCell")
-        cell.detailTextLabel?.text = array[indexPath.row].language ?? "???"
+        cell.detailTextLabel?.text = array[indexPath.row].language ?? "Unknown language"
         cell.textLabel?.text = array[indexPath.row].name ?? "???"
         return cell
     }

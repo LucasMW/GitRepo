@@ -9,7 +9,7 @@
 import UIKit
 
 class HomeViewController: UIViewController, UITextFieldDelegate {
-
+    
     var repoName : String = ""
     var array : [RepoResponse] = []
     var isPresenting = false
@@ -22,8 +22,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         inputField.delegate = self
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(
-        target: self,
-        action: #selector(dismissMyKeyboard))
+            target: self,
+            action: #selector(dismissMyKeyboard))
         view.addGestureRecognizer(tap)
     }
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -39,11 +39,11 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-       textField.resignFirstResponder()
+        textField.resignFirstResponder()
         collectName()
         return true
     }
-
+    
     @objc func keyboardWillHide(notification: NSNotification) {
         if self.view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0
@@ -64,11 +64,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
             self.view.window?.rootViewController?.present(alert, animated: true, completion: nil)
             isPresenting = true
         }
-        
-        
-       
-        
-        
     }
     func showAlert(message : String) {
         showAlert(title: "Error", message: message)
@@ -85,16 +80,13 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         collectName()
         api.getRepo(userName: repoName) { array, error  in
             if error != nil {
-                print(error?.toMessage())
                 self.showAlert(message: error?.toMessage() ?? "???")
-                print("SHOULD RETURN")
                 return
             }
             self.array = array ?? []
             let vc = ProfileDetailViewController()
             vc.array = array
-             self.navigationController?.popToRootViewController(animated: true)
-            //self.view.window?.rootViewController?.present(vc, animated: true, completion: nil)
+            self.navigationController?.popToRootViewController(animated: true)
             self.performSegue(withIdentifier: "Detail", sender: nil)
         }
     }
@@ -109,11 +101,9 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             vc.array = array
-            
-            
         }
     }
-
-
+    
+    
 }
 
