@@ -37,7 +37,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Github" id="fKT-nO-lSN"/>
+                    <navigationItem key="navigationItem" title="Github" id="fKT-nO-lSN">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="yvs-rS-gSg"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="inputField" destination="y2c-Hg-58l" id="aTg-CM-IVD"/>
                         <segue destination="3oa-F6-M2u" kind="show" identifier="Detail" id="f8u-az-IFU"/>

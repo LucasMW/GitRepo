@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		FF3A8D6A25C886A600D954D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A8D6925C886A600D954D4 /* AppDelegate.swift */; };
-		FF3A8D6C25C886A600D954D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A8D6B25C886A600D954D4 /* SceneDelegate.swift */; };
 		FF3A8D6E25C886A600D954D4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3A8D6D25C886A600D954D4 /* HomeViewController.swift */; };
 		FF3A8D7125C886A600D954D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF3A8D6F25C886A600D954D4 /* Main.storyboard */; };
 		FF3A8D7325C886A700D954D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF3A8D7225C886A700D954D4 /* Assets.xcassets */; };
@@ -43,7 +42,6 @@
 /* Begin PBXFileReference section */
 		FF3A8D6625C886A600D954D4 /* GitRepo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitRepo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF3A8D6925C886A600D954D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FF3A8D6B25C886A600D954D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FF3A8D6D25C886A600D954D4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FF3A8D7025C886A600D954D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF3A8D7225C886A700D954D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -113,7 +111,6 @@
 			children = (
 				FF3A8D9925C892BD00D954D4 /* Model */,
 				FF3A8D6925C886A600D954D4 /* AppDelegate.swift */,
-				FF3A8D6B25C886A600D954D4 /* SceneDelegate.swift */,
 				FF3A8D6D25C886A600D954D4 /* HomeViewController.swift */,
 				FF3A8DA325C8A11800D954D4 /* ProfileDetailViewController.swift */,
 				FF3A8D6F25C886A600D954D4 /* Main.storyboard */,
@@ -297,7 +294,6 @@
 				FF3A8D9E25C8942F00D954D4 /* Owner.swift in Sources */,
 				FF3A8D9F25C8942F00D954D4 /* License.swift in Sources */,
 				FF3A8D6A25C886A600D954D4 /* AppDelegate.swift in Sources */,
-				FF3A8D6C25C886A600D954D4 /* SceneDelegate.swift in Sources */,
 				FF3A8DA425C8A11800D954D4 /* ProfileDetailViewController.swift in Sources */,
 				FF3A8DA025C8942F00D954D4 /* RepoResponse.swift in Sources */,
 				FF3A8DA225C894AA00D954D4 /* API.swift in Sources */,
@@ -477,7 +473,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N39N6XW3TU;
 				INFOPLIST_FILE = GitRepo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -496,7 +492,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N39N6XW3TU;
 				INFOPLIST_FILE = GitRepo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
